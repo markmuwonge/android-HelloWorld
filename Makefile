@@ -1,3 +1,6 @@
+#Tools: Android SDK Build-Tools 33.0.0, Java8, Make for Windows (gnuwin32.sourceforge.net/packages/make.htm), https://github.com/Sable/android-platforms android-24 jar
+
+
 ANDROID_APP_NAME = hello_world
 ORG = com.markmuwonge
 
@@ -12,7 +15,7 @@ ANDROID_JAR_DIR = libs/android
 DEX_FILE_REL_PATH = classes.dex
 
 ANDROID_MANIFEST_REL_PATH = AndroidManifest.xml
-ANDROID_MANIFEST_DIRECTORY_REL_PATH = ""
+ANDROID_MANIFEST_DIRECTORY_REL_PATH = 
 ANDROID_APP_PACKAGE_NAME = ${ORG}.${ANDROID_APP_NAME}
 
 APK_FILE_REL_PATH = build.apk
@@ -74,7 +77,7 @@ ${APK_FILE_REL_PATH}:${DEX_FILE_REL_PATH} ${ANDROID_MANIFEST_REL_PATH}
 
 ######################S######################
 ${DEX_FILE_REL_PATH}: ${JAVA_CLASS_FILE_REL_PATHS}
-	d8 $^ --classpath ${ANDROID_JAR_DIR}/android-${ANDROID_API_LEVEL}.jar
+	d8 $^ --classpath ${ANDROID_JAR_DIR}/android-${ANDROID_API_LEVEL}.jar 
 ######################E######################
 
 ######################S######################
