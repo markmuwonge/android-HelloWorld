@@ -1,5 +1,6 @@
-#Tools: Android SDK Build-Tools 33.0.0, Java8, Make for Windows (gnuwin32.sourceforge.net/packages/make.htm), https://github.com/Sable/android-platforms android-24 jar
-
+#Tools: Android SDK Build-Tools 33.0.0, Java8, Make for Windows (gnuwin32.sourceforge.net/packages/make.htm), https://github.com/Sable/android-platforms android-24 jar, platform-tools (ADB.exe)
+#1.make
+#2. adb install build.apk
 
 ANDROID_APP_NAME = hello_world
 ORG = com.markmuwonge
@@ -88,6 +89,7 @@ ${JAVA_CLASS_FILE_REL_PATHS}: ${JAVA_SOURCE_FILE_REL_PATHS}
 ######################S######################
 ${ANDROID_MANIFEST_REL_PATH}:
 	copy ${ANDROID_MANIFEST_REL_PATH}.template $(subst /,\,${CURDIR}${ANDROID_MANIFEST_DIRECTORY_REL_PATH}\${ANDROID_MANIFEST_REL_PATH})
+	$(call file_contents_replace,$(subst /,\,${CURDIR}${ANDROID_MANIFEST_DIRECTORY_REL_PATH}\${ANDROID_MANIFEST_REL_PATH}),'$${ANDROID_API_LEVEL}','${ANDROID_API_LEVEL}')
 	$(call file_contents_replace,$(subst /,\,${CURDIR}${ANDROID_MANIFEST_DIRECTORY_REL_PATH}\${ANDROID_MANIFEST_REL_PATH}),'$${PACKAGENAME}','${ANDROID_APP_PACKAGE_NAME}')
 	$(call file_contents_replace,$(subst /,\,${CURDIR}${ANDROID_MANIFEST_DIRECTORY_REL_PATH}\${ANDROID_MANIFEST_REL_PATH}),'$${LABEL}','${ANDROID_APP_NAME}')
 ######################E######################
